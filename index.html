@@ -26,7 +26,7 @@
       href="http://www.bootstrap-switch.org/dist/css/bootstrap3/bootstrap-switch.css">
     <script type='text/javascript'
       src="http://www.bootstrap-switch.org/dist/js/bootstrap-switch.js"></script>
-    <script type='text/javascript'>//<![CDATA[
+    <script type='text/javascript'>//<!--[CDATA[
     $(window).load(function(){
         $("input.switch").bootstrapSwitch();
     });
@@ -190,7 +190,7 @@
   setInterval(function(){
     var date = new Date();
     $.ajax( {
-        url: 'http://10.32.176.4/external'
+        url: 'http://localhost:80/external/99'
     })
     .done(function (data){
         receive = data.split("-");
@@ -215,6 +215,7 @@
     lineGround.append(new Date().getTime(),receive[1]);
     setTemp(receive[3]);
     setWaterTank(receive[0]);
+    console.log(receive);
 
      checkTimeSet(hourText);
 
@@ -274,7 +275,7 @@
       x.style.color = "Red";
       x.style.fontSize = "40px";
       $.ajax({
-        url: 'http://10.32.176.4/external/' + '3'
+        url: 'hhttp://localhost:80/external/' + '3'
       })
     } else if (statusChange == "time"){
       x.style.color = "Orange";
@@ -295,7 +296,7 @@
 
     if(state == true){
       $.ajax( {
-        url: 'http://10.32.176.4/external/' + '1'
+        url: 'http://localhost:80/external/' + '1'
       })
       console.log("add");
       increaseMove();
@@ -373,7 +374,7 @@
     function checkTimeSet(hourText){
       if ( hourText == timeUse && stateCheck == true){
         $.ajax( {
-          url: 'http://10.32.176.4/external/' + '1'
+          url: 'http://localhost:80/external/' + '1'
         });
         stateCheck = false
         checkHello = 0;
