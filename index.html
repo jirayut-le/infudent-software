@@ -26,9 +26,10 @@
       href="http://www.bootstrap-switch.org/dist/css/bootstrap3/bootstrap-switch.css">
     <script type='text/javascript'
       src="http://www.bootstrap-switch.org/dist/js/bootstrap-switch.js"></script>
-    <script type='text/javascript'>//<!--[CDATA[
+    <script type='text/javascript'>
     $(window).load(function(){
-        $("input.switch").bootstrapSwitch();
+        $('input[id="increaseWater"]').bootstrapSwitch();
+        // $("[name='my-checkbox']").bootstrapSwitch();
     });
     </script>
     <script type="text/javascript" src="smoothie.js"></script>
@@ -80,6 +81,7 @@
 
     <div id= "switchWaterOn">
       <input id = "increaseWater" type="checkbox" class="switch" off-label data-toggle="toggle" />
+      <button id="testsent1">Sent1</button>
     </div>
 
     <div id="addWater">
@@ -134,6 +136,8 @@
                 </div>
                 <div class="modal-body">
                   <input id = "check" type="checkbox" class="switch" off-label data-toggle="toggle" />
+
+                  <!--<input type="checkbox" name="my-checkbox">-->
 
                   <select name="time" disabled id="timeSelect">
                     <option value="0">0</option>
@@ -190,10 +194,14 @@
   setInterval(function(){
     var date = new Date();
     $.ajax( {
-        url: 'http://localhost:80/external/99'
+        url: 'http://192.168.43.159/free-elective'
     })
     .done(function (data){
+      console.log(data);
+      if(data != null)
         receive = data.split("-");
+      else 
+        console.log("can't receive data");
     });
 
     var hourText = date.getHours();
@@ -275,7 +283,7 @@
       x.style.color = "Red";
       x.style.fontSize = "40px";
       $.ajax({
-        url: 'hhttp://localhost:80/external/' + '3'
+        url: 'http://192.168.43.159/free-elective/' + '3'
       })
     } else if (statusChange == "time"){
       x.style.color = "Orange";
@@ -287,7 +295,8 @@
   }
 
   $(window).load(function(){
-    $("input.switch").bootstrapSwitch();
+    // $("input.switch").bootstrapSwitch();
+    $('input[id="increaseWater"]').bootstrapSwitch();
   });
 
   $('input[id="increaseWater"]').on('switchChange.bootstrapSwitch', function(event, state) {
@@ -296,12 +305,19 @@
 
     if(state == true){
       $.ajax( {
-        url: 'http://localhost:80/external/' + '1'
+        url: 'http://192.168.43.159/free-elective/' + '1'
       })
       console.log("add");
       increaseMove();
     }
   });
+
+  $('#testsent1').click(function(){
+    console.log('add water');
+    $.ajax( {
+        url: 'http://192.168.43.159/free-elective/' + '1'
+    })
+  })
 
   function increaseMove() {
 
@@ -362,8 +378,9 @@
     var durationValue = a.options[a.selectedIndex].value;
 
 
-    $('input[id="check"]').on('switchChange.bootstrapSwitch', function(event, state) {
+    $('input[id="increaseWater"]').on('switchChange.bootstrapSwitch', function(event, state) {
       stateCheck = state ;
+      console.log(stateCheck);
       if(stateCheck == false){
         disable();
       } else {
@@ -374,7 +391,7 @@
     function checkTimeSet(hourText){
       if ( hourText == timeUse && stateCheck == true){
         $.ajax( {
-          url: 'http://localhost:80/external/' + '1'
+          url: 'http://192.168.43.159/free-elective/' + '1'
         });
         stateCheck = false
         checkHello = 0;

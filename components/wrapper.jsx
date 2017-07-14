@@ -5,7 +5,7 @@ var ReactDOM = require("react-dom");
         var self = this;
         setInterval(function(){
           $.ajax({
-            url: 'http://localhost:8080/free-elective'
+            url: 'http://localhost/free-elective'
           })
           .success(function(data){
             if (data !== currentMessage){
@@ -31,7 +31,7 @@ var ReactDOM = require("react-dom");
           // var message = messageInput.val();
           // allChat.push(message);
           $.ajax({
-            url: 'http://localhost:8080/free-elective/' + "Thung : "+ message + " [ "+ date.getHours() + ":" + date.getMinutes() + " ]"
+            url: 'http://localhost/free-elective/' + "Thung : "+ message + " [ "+ date.getHours() + ":" + date.getMinutes() + " ]"
           })
           // messageInput.val('');
           this.setState({

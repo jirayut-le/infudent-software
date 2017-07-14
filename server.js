@@ -16,6 +16,20 @@ app.get("/", function(req, res) {
   res.sendFile(__dirname + '/index.html');
 });
 
+app.get('/free-elective', function (req, res) {
+   	res.end(temp)
+ })
+ app.get('/free-elective/:msg', function (req, res) {
+ 	temp = req.params.msg
+ 
+    console.log("/free-elective/" + req.params.msg)
+    if(req.params.msg == 1){
+      res.end("1")
+    } else {
+      res.end("{data:'Recived!'}")
+    }
+ })
+
 app.listen(port, function(error) {
   if (error) {
     console.error(error);
