@@ -220,10 +220,17 @@
     min.html(minText + ' :');
     sec.html(secText);
 
-    lineLight.append(new Date().getTime(),receive[2]);
-    lineGround.append(new Date().getTime(),receive[1]);
-    setTemp(receive[3]);
-    setWaterTank(receive[0]);
+    if(receive[0] == 'x'){
+      lineGround.append(new Date().getTime(),receive[1]);
+      lineLight.append(new Date().getTime(),receive[2]);
+      setTemp(receive[3]);
+    } else if (receive[0] == 'y'){
+      setWaterTank(receive[1]);
+    }
+
+    // lineLight.append(new Date().getTime(),receive[2]);
+    // lineGround.append(new Date().getTime(),receive[1]);
+    // setWaterTank(receive[0]);
     console.log(receive);
 
      checkTimeSet(hourText);
