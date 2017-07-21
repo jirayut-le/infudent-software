@@ -80,16 +80,16 @@
     </div>
 
     <div id= "switchWaterOn">
-      <input id = "increaseWater" type="checkbox" class="switch" off-label data-toggle="toggle" />
-      <button id="testsent1">Sent1</button>
+      <!-- <input id = "increaseWater" type="checkbox" class="switch" off-label data-toggle="toggle" /> -->
+      <button id="testsent1">Add water</button>
     </div>
 
-    <div id="addWater">
+    <!-- <div id="addWater">
       <div id="addWT" class="progress vertical">
         <div id="addWTValue" class="progress-bar progress-bar-info" role="progressbar" style= >
         </div>
       </div>
-    </div>
+    </div> -->
 
     <div id="celsius">
       <span id="celsiusValue">0</span>
@@ -135,8 +135,9 @@
                   <h4 class="modal-title">Set your time</h4>
                 </div>
                 <div class="modal-body">
-                  <input id = "check" type="checkbox" class="switch" off-label data-toggle="toggle" />
-
+                  <!-- <input id = "check" type="checkbox" class="switch" off-label data-toggle="toggle" /> -->
+                  <button id="onNoti">ON</button>
+                  <button id="offNoti">OFF</button>
                   <!--<input type="checkbox" name="my-checkbox">-->
 
                   <select name="time" disabled id="timeSelect">
@@ -317,6 +318,14 @@
     $.ajax( {
         url: 'http://192.168.43.159/free-elective/' + '1'
     })
+  })
+
+  $('#onNoti').click(function(){
+    enable();
+  })
+
+  $('#offNoti').click(function(){
+    disable();
   })
 
   function increaseMove() {
