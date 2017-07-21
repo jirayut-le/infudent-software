@@ -192,10 +192,12 @@
   var intervalFrame = 1000;
   var checkHello = 0;
 
+  var ip = 'http://158.108.165.218/free-elective';
+
   setInterval(function(){
     var date = new Date();
     $.ajax( {
-        url: 'http://192.168.43.159/free-elective'
+        url: ip
     })
     .done(function (data){
       console.log(data);
@@ -313,7 +315,7 @@
 
     if(state == true){
       $.ajax( {
-        url: 'http://192.168.43.159/free-elective/' + '1'
+        url: ip + '/1'
       })
       console.log("add");
       increaseMove();
@@ -323,7 +325,7 @@
   $('#testsent1').click(function(){
     console.log('add water');
     $.ajax( {
-        url: 'http://192.168.43.159/free-elective/' + '1'
+        url: ip + '/1'
     })
   })
 
@@ -407,7 +409,7 @@
     function checkTimeSet(hourText){
       if ( hourText == timeUse && stateCheck == true){
         $.ajax( {
-          url: 'http://192.168.43.159/free-elective/' + '1'
+          url: ip + '/1'
         });
         stateCheck = false
         checkHello = 0;
